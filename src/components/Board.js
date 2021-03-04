@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css'
+import StyledBoard from './Board.styles'
+import '../App.css';
 
 function Board() {
     const [position, setPosition] = useState({x: 0, y: 0});
@@ -60,7 +61,7 @@ function Board() {
     }, [position]);
 
     return (
-      <div className="board">
+      <StyledBoard>
         <div className="square" data-square-coord="00">
         </div>
         <div className="square" data-square-coord="01">
@@ -79,7 +80,7 @@ function Board() {
         </div>
         <div className="square" data-square-coord="22">
         </div>
-      </div>
+      </StyledBoard>
     );
   }
   
