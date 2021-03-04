@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import StyledBoard from './Board.styles'
+import StyledBoard from './Board.styles';
+import StyledSquare from './Square.styles';
 import '../App.css';
 
 function Board() {
@@ -7,6 +8,16 @@ function Board() {
     const coordSum = Object.values(position)[0] + Object.values(position)[1];
     const isValidCoord = coordSum >= 0 && coordSum <= 4;
 
+    const boardSize = 9;
+    const coordList = [];
+    const squareRootOfBoard = Math.sqrt(boardSize); // 3
+
+    for (let i = 0; i < squareRootOfBoard; i++) {
+      for (let j = 0; j < squareRootOfBoard; j++) {
+        coordList.push(`${i}${j}`);
+      }
+    }
+    
     function handleKeyDown(event) {
         if (event.key === 'ArrowUp'
           && position["x"] - 1 >= 0 
@@ -41,7 +52,6 @@ function Board() {
 
     useEffect(() => {   
         window.addEventListener('keydown', handleKeyDown);
-        console.log(position);
         // cleanup component
         return () => {
           window.removeEventListener('keydown', handleKeyDown);
@@ -62,24 +72,9 @@ function Board() {
 
     return (
       <StyledBoard>
-        <div className="square" data-square-coord="00">
-        </div>
-        <div className="square" data-square-coord="01">
-        </div>
-        <div className="square" data-square-coord="02">
-        </div>
-        <div className="square" data-square-coord="10">
-        </div>
-        <div className="square" data-square-coord="11">
-        </div>
-        <div className="square" data-square-coord="12">
-        </div>
-        <div className="square" data-square-coord="20">
-        </div>
-        <div className="square" data-square-coord="21">
-        </div>
-        <div className="square" data-square-coord="22">
-        </div>
+        {coordList.map(
+          coord => <StyledSquare className="square" key={coord} data-square-coord={coord}></StyledSquare>
+        )}
       </StyledBoard>
     );
   }

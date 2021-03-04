@@ -1,11 +1,3 @@
-.square {
-  border: 1px solid green;
-  box-sizing: border-box;
-  background-color: palegoldenrod;
-  width: 100px;
-  height: 100px;
-}
-
 .fox {
   background-image: url('../src/components/fox.svg');
   background-size: 70%;
