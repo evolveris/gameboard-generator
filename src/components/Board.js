@@ -9,7 +9,7 @@ function Board() {
     const coordSum = Object.values(position)[0] + Object.values(position)[1];
 
     // define desired board size
-    const boardSize = 100;
+    const boardSize = 36;
     const squareRootOfBoard = Math.sqrt(boardSize); 
     const endRowSquareIndex =squareRootOfBoard - 1;
 
@@ -64,7 +64,7 @@ function Board() {
 
     useEffect(() => {
         setIsValidCoord(coordSum >= 0 && coordSum <= (Math.sqrt(boardSize) * 2))
-        console.log(isValidCoord);
+
         if (isValidCoord) {
             if (document.querySelector(".fox")) {
                 document.querySelector(".fox").classList.remove("fox");
