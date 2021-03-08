@@ -5,12 +5,14 @@ import '../App.css';
 
 function Board() {
     const [position, setPosition] = useState({x: 0, y: 0});
-    const coordSum = Object.values(position)[0] + Object.values(position)[1];
-    const isValidCoord = coordSum >= 0 && coordSum <= 4;
+    const [isValidCoord, setIsValidCoord] = useState(true);
 
+    // define desired board size
     const boardSize = 9;
+    
+    // generate board
     const coordList = [];
-    const squareRootOfBoard = Math.sqrt(boardSize); // 3
+    const squareRootOfBoard = Math.sqrt(boardSize); 
 
     for (let i = 0; i < squareRootOfBoard; i++) {
       for (let j = 0; j < squareRootOfBoard; j++) {
@@ -58,7 +60,10 @@ function Board() {
         };
     },);
 
-    useEffect(() => {  
+    useEffect(() => {
+        const coordSum = Object.values(position)[0] + Object.values(position)[1];
+        setIsValidCoord(coordSum >= 0 && coordSum <= (Math.sqrt(boardSize) + 1))
+
         if (isValidCoord) {
             if (document.querySelector(".fox")) {
                 document.querySelector(".fox").classList.remove("fox");
@@ -68,6 +73,7 @@ function Board() {
               document.querySelector(`[data-square-coord="${value}"]`).classList.add("fox");
             }
         }
+        
     }, [position]);
 
     return (
