@@ -81,7 +81,7 @@ function Board() {
     return (
       <StyledBoard boardSize={squareRootOfBoard}>
         {coordList.map(
-          coord => <StyledSquare className="square" key={coord} theme={context.background} data-square-coord={coord}></StyledSquare>
+          coord => <StyledSquare className="square" key={coord} theme={context.squareBackground} data-square-coord={coord}></StyledSquare>
         )}
       </StyledBoard>
     );

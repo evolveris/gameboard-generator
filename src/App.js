@@ -8,10 +8,16 @@ export const ThemeContext = React.createContext();
 
 const themes = {
   light: {
-    background: "#efd9a0"
+    squareBackground: "#efd9a0",
+    themeContainerBackground: "#ede3e3",
+    themeToggleBackground: '#efd9a0',
+    themeToggleTransition: "translateX(0%)"
   },
   dark: {
-    background: "#222222"
+    squareBackground: "#222",
+    themeContainerBackground: "#474545",
+    themeToggleBackground: '#222',
+    themeToggleTransition: "translateX(100%)"
   }
 };
 
@@ -28,8 +34,8 @@ function App() {
 
   return (
     <ThemeContext.Provider value={themes[theme]}>
-      <ThemeContainer theme={theme}>
-        <ThemeToggle toggleTheme={toggleTheme} theme={theme}></ThemeToggle>
+      <ThemeContainer>
+        <ThemeToggle toggleTheme={toggleTheme}></ThemeToggle>
         <Board></Board>
       </ThemeContainer>
     </ThemeContext.Provider>

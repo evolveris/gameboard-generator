@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StyledThemeContainer from './ThemeContainer.styles';
+import { ThemeContext } from '../App';
 
-function ThemeContainer ({ theme, children }) {
+function ThemeContainer ({ children }) {
+    const context = useContext(ThemeContext);
     return (
-      <StyledThemeContainer theme={theme}>
+      <StyledThemeContainer theme={context.themeContainerBackground}>
           {children}
       </StyledThemeContainer>
     );
