@@ -67,7 +67,6 @@ function Board() {
 
     useEffect(() => {
         setIsValidCoord(coordSum >= 0 && coordSum <= (Math.sqrt(boardSize) * 2))
-
         if (isValidCoord) {
             if (document.querySelector(".fox")) {
                 document.querySelector(".fox").classList.remove("fox");
@@ -77,7 +76,7 @@ function Board() {
               document.querySelector(`[data-square-coord="${value}"]`).classList.add("fox");
             }
         }
-    }, [position]);
+    }, [position, context]);
 
     return (
       <StyledBoard boardSize={squareRootOfBoard}>

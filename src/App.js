@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './components/Board'
 import Board from './components/Board';
 import ThemeToggle from './components/ThemeToggle'
@@ -24,7 +24,7 @@ function App() {
         setTheme('light');
     }
   }
-  
+
   return (
     <ThemeContext.Provider value={themes[theme]}>
       <ThemeToggle toggleTheme={toggleTheme} theme={theme}></ThemeToggle>
