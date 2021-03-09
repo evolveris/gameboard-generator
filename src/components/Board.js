@@ -14,7 +14,7 @@ function Board() {
     // define desired board size
     const boardSize = 36;
     const squareRootOfBoard = Math.sqrt(boardSize); 
-    const endRowSquareIndex =squareRootOfBoard - 1;
+    const endRowSquareIndex = squareRootOfBoard - 1;
 
     // generate board
     const coordList = [];
