@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledThemeToggle = styled.button`
     display: block;
-    margin: 20px auto;
+    margin: 0px auto;
     height: 40px;
     width: 100px;
     border-radius: 30px;
