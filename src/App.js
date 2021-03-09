@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './components/Board'
 import Board from './components/Board';
 import ThemeToggle from './components/ThemeToggle'
-import BodyContainer from './components/BodyContainer'
+import ThemeContainer from './components/ThemeContainer'
 
 export const ThemeContext = React.createContext();
 
@@ -28,10 +28,10 @@ function App() {
 
   return (
     <ThemeContext.Provider value={themes[theme]}>
-      <BodyContainer theme={theme}>
+      <ThemeContainer theme={theme}>
         <ThemeToggle toggleTheme={toggleTheme} theme={theme}></ThemeToggle>
         <Board></Board>
-      </BodyContainer>
+      </ThemeContainer>
     </ThemeContext.Provider>
   );
 }
