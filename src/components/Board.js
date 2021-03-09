@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import StyledBoard from './Board.styles';
 import StyledSquare from './Square.styles';
 import '../App.css';
+import { ThemeContext } from '../App';
 
 function Board() {
     const [position, setPosition] = useState({x: 0, y: 0});
     const [isValidCoord, setIsValidCoord] = useState(true);
     const coordSum = Object.values(position)[0] + Object.values(position)[1];
+    
+    const context = useContext(ThemeContext);
 
     // define desired board size
     const boardSize = 36;
@@ -79,7 +82,7 @@ function Board() {
     return (
       <StyledBoard boardSize={squareRootOfBoard}>
         {coordList.map(
-          coord => <StyledSquare className="square" key={coord} data-square-coord={coord}></StyledSquare>
+          coord => <StyledSquare className="square" key={coord} theme={context.background} data-square-coord={coord}></StyledSquare>
         )}
       </StyledBoard>
     );
