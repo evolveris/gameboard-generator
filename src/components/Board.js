@@ -6,9 +6,7 @@ import { ThemeContext } from '../App';
 
 function Board() {
     const [position, setPosition] = useState({x: 0, y: 0});
-    const [isValidCoord, setIsValidCoord] = useState(true);
-    const coordSum = Object.values(position)[0] + Object.values(position)[1];
-    
+    const currentPositionCoord = Object.values(position).join("");  
     const context = useContext(ThemeContext);
 
     // define desired board size
@@ -63,25 +61,12 @@ function Board() {
         return () => {
           window.removeEventListener('keydown', handleKeyDown);
         };
-    },);
-
-    useEffect(() => {
-        setIsValidCoord(coordSum >= 0 && coordSum <= (Math.sqrt(boardSize) * 2))
-        if (isValidCoord) {
-            if (document.querySelector(".fox")) {
-                document.querySelector(".fox").classList.remove("fox");
-            }
-            const value = Object.values(position).join("");
-            if (document.querySelector(`[data-square-coord="${value}"]`) !== null) {
-              document.querySelector(`[data-square-coord="${value}"]`).classList.add("fox");
-            }
-        }
     }, [position, context]);
 
     return (
       <StyledBoard boardSize={squareRootOfBoard}>
         {coordList.map(
-          coord => <StyledSquare className="square" key={coord} theme={context.squareBackground} data-square-coord={coord}></StyledSquare>
+          coord => <StyledSquare className={`square ${currentPositionCoord === coord && `fox`}`} key={coord} theme={context.squareBackground} data-square-coord={coord}></StyledSquare>
         )}
       </StyledBoard>
     );
