@@ -22,6 +22,16 @@ function Board() {
         coordList.push(`${i}${j}`);
       }
     }
+
+    function generateStyledSquareFromCoords(coord, currentPositionCoord, context) {
+      const foxClass = currentPositionCoord === coord ? "fox" : "";
+      return <StyledSquare 
+        className={`square ${foxClass}`} 
+        key={coord} 
+        theme={context.squareBackground} 
+        data-square-coord={coord}
+      />
+    }
     
     function handleKeyDown(event) {
         if (event.key === 'ArrowUp'
@@ -65,9 +75,7 @@ function Board() {
 
     return (
       <StyledBoard boardSize={squareRootOfBoard}>
-        {coordList.map(
-          coord => <StyledSquare className={`square ${currentPositionCoord === coord && `fox`}`} key={coord} theme={context.squareBackground} data-square-coord={coord}></StyledSquare>
-        )}
+        {coordList.map(coord => generateStyledSquareFromCoords(coord, currentPositionCoord, context))}
       </StyledBoard>
     );
   }
